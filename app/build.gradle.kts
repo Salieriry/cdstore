@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.app.cdstore"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.fragment.ktx)
     debugImplementation(libs.compose.tooling)
     implementation(libs.bundles.ui)
 

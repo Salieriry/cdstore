@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">CD Store</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Página Inicial</string>
+    <string name="title_store">Loja</string>
+    <string name="title_profile">Perfil</string>
+    <string name="password_hint">teste</string>
+    <string name="email_hint">gmail.com, hotmail.com ou afins</string>
 </resources>
