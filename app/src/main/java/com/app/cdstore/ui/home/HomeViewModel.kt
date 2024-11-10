@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
-    private val _bestSellers = MutableLiveData<List<Cd>>()
+  /*  private val _bestSellers = MutableLiveData<List<Cd>>()
     val bestSellers: LiveData<List<Cd>> = _bestSellers
 
     private val _newAdditions = MutableLiveData<List<Cd>>()
@@ -39,5 +39,5 @@ class HomeViewModel : ViewModel() {
                 // Tratamento de erro
             }
         }
-    }
+    } */
 }

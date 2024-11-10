@@ -8,7 +8,7 @@ import com.app.cdstore.data.model.Cd
 import com.app.cdstore.databinding.ItemCdBinding
 import com.bumptech.glide.Glide
 
-class CdAdapter(
+/* class CdAdapter(
     private val onItemClick: (Cd) -> Unit
 ) : RecyclerView.Adapter<CdAdapter.CdViewHolder>() {
 
@@ -55,4 +55,4 @@ class CdAdapter(
             }
         }
     }
-}
+} */

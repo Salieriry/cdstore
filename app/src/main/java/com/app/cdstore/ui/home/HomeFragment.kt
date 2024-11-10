@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.app.cdstore.R
 import com.app.cdstore.databinding.FragmentHomeBinding
 import com.app.cdstore.data.model.Cd
-import com.app.cdstore.ui.cdadapter.CdAdapter
+//import com.app.cdstore.ui.cdadapter.CdAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 import android.widget.LinearLayout
@@ -23,13 +23,13 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val bestSellersAdapter = CdAdapter { cd ->
+ /*   private val bestSellersAdapter = CdAdapter { cd ->
         navigateToDetails(cd)
     }
 
     private val newAdditionsAdapter = CdAdapter { cd ->
         navigateToDetails(cd)
-    }
+    } */
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -44,12 +44,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerViews()
-        setupObservers()
-        setupClickListeners()
+      //  setupRecyclerViews()
+       // setupObservers()
+       // setupClickListeners()
     }
 
-    private fun setupRecyclerViews() {
+/*    private fun setupRecyclerViews() {
         // Configuração dos RecyclerViews com adapters
         binding.scrollBestSellers.apply {
             (getChildAt(0) as LinearLayout).apply {
@@ -149,5 +149,5 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    } */
 }

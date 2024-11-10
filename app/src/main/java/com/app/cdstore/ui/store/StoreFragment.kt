@@ -9,16 +9,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.app.cdstore.databinding.FragmentStoreBinding
-import com.app.cdstore.ui.cdadapter.CdAdapter
+//import com.app.cdstore.ui.cdadapter.CdAdapter
 import com.google.android.material.snackbar.Snackbar
+
 
 class StoreFragment : Fragment() {
     private var _binding: FragmentStoreBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: StoreViewModel by viewModels()
-    private val args: StoreFragmentArgs by navArgs()
-    private lateinit var cdAdapter: CdAdapter
+  //  private val args: StoreFragmentArgs by navArgs()
+   // private lateinit var cdAdapter: CdAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,13 +32,13 @@ class StoreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
-        setupSearchAndFilters()
-        setupObservers()
-        applyInitialFilter()
+      //  setupRecyclerView()
+       // setupSearchAndFilters()
+       // setupObservers()
+       // applyInitialFilter()
     }
 
-    private fun setupRecyclerView() {
+  /*  private fun setupRecyclerView() {
         cdAdapter = CdAdapter { cd ->
             // Navegação para detalhes do CD
             findNavController().navigate(
@@ -119,5 +120,5 @@ class StoreFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    } */
 }

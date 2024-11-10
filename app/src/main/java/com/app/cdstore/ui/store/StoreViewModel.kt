@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StoreViewModel @Inject constructor(
-    private val repository = CdRepository()
+  //  private val repository = CdRepository()
                                 ) : ViewModel() {
 
      // Você precisa criar este repositório
@@ -27,7 +27,7 @@ class StoreViewModel @Inject constructor(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private var currentFilter = "popularity"
+  /*  private var currentFilter = "popularity"
     private var currentSearch = ""
     private var isAscending = true
 
@@ -101,5 +101,5 @@ class StoreViewModel @Inject constructor(
                 _isLoading.value = false
             }
         }
-    }
+    } */
 }

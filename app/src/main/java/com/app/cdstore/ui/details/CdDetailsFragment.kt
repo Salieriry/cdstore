@@ -22,8 +22,8 @@ class CdDetailsFragment : Fragment() {
 
 
 
-    private val args: CdDetailsFragmentArgs by navArgs()
-    val cdId = args.cdId
+ //   private val args: CdDetailsFragmentArgs by navArgs()
+  //  val cdId = args.cdId
     private val viewModel: CdDetailsViewModel by viewModels()
 
     override fun onCreateView(
@@ -37,12 +37,12 @@ class CdDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupToolbar()
-        setupObservers()
-        loadData()
+        //setupToolbar()
+        //setupObservers()
+       // loadData()
     }
 
-    private fun setupToolbar() {
+  /*  private fun setupToolbar() {
         (requireActivity() as AppCompatActivity).apply {
             setSupportActionBar(binding.toolbar)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -123,5 +123,5 @@ class CdDetailsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    } */
 }

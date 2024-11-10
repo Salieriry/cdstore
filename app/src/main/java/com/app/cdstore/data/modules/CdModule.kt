@@ -14,15 +14,16 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object CdModule {
 
-    @Provides
+ /*   @Provides
     fun provideCdApi(): CdApi {
         // Retorne a instância do CdApi (pode ser Retrofit ou qualquer outra implementação)
-    }
 
-    @Provides
+    } */
+
+   /* @Provides
     fun provideCdDatabase(): CdDatabase {
         // Retorne a instância do banco de dados local (ex: Room)
-    }
+    } */
 
     @Provides
     fun provideCdRepository(api: CdApi, database: CdDatabase): CdRepository {
