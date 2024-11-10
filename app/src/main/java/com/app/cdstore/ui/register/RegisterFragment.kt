@@ -1,40 +1,48 @@
 package com.app.cdstore.ui.register
 
-import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import com.app.cdstore.R
-import com.google.android.material.textfield.TextInputEditText
-import androidx.navigation.fragment.findNavController
-import java.util.Calendar
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.app.cdstore.databinding.FragmentRegisterBinding
+import com.app.cdstore.data.model.SupaBaseAuthViewModel
 
 class RegisterFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = RegisterFragment()
-    }
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
-    private val viewModel: RegisterViewModel by viewModels()
+    // Certifique-se de que os ViewModels estão corretamente inicializados
+    private val registerViewModel by viewModels<RegisterViewModel>()
+    private val authViewModel by viewModels<SupaBaseAuthViewModel>()
+    private lateinit var registerView: RegisterView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Volta para a tela anterior
-        view.findViewById<ImageButton>(R.id.backButton).setOnClickListener {
-            findNavController().popBackStack()
-        }
+        // Inicializa a View com os elementos de UI
+        registerView = RegisterView(
+            binding = binding,
+            onBackClicked = { findNavController().popBackStack() },
+            authViewModel = authViewModel,
+            registerViewModel = registerViewModel,
+            fragment = this
+        )
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

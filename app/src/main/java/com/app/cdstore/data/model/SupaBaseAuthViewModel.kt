@@ -1,11 +1,10 @@
-package com.app.cdstore.ui.profile
+package com.app.cdstore.data.model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.app.cdstore.data.model.UserState
 import com.app.cdstore.utils.SharedPreferenceHelper
 import io.github.jan.supabase.auth.auth
 import com.app.cdstore.data.network.SupabaseClient.client
@@ -25,11 +24,15 @@ class SupaBaseAuthViewModel(application: Application) :AndroidViewModel(applicat
 
         viewModelScope.launch {
             try {
+
+
                 // Lógica de registro
                 client.auth.signUpWith(Email) {
                     email = userEmail
                     password = userPassword
                 }
+
+
 
                 // Salva o token após o cadastro bem-sucedido
                 saveToken()

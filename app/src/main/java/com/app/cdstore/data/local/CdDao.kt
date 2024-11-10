@@ -6,7 +6,7 @@ import com.app.cdstore.data.model.Cd
 
 @Dao
 interface CdDao {
-    @Query("SELECT * FROM cds")
+  /*  @Query("SELECT * FROM cds")
     suspend fun getAllCds(): List<Cd>
 
     @Query("SELECT * FROM cds WHERE id = :id")
@@ -28,5 +28,5 @@ interface CdDao {
     suspend fun insertAll(cds: List<Cd>)
 
     @Delete
-    suspend fun delete(cd: Cd)
+    suspend fun delete(cd: Cd) */
 }

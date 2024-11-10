@@ -23,6 +23,7 @@ class ProfileViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 // Tenta realizar o login
+
                 client.auth.signInWith(Email) {
                     email = userEmail
                     password = userPassword

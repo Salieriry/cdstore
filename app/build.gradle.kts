@@ -1,8 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("plugin.serialization") version "1.9.24"
-    kotlin("kapt")
+ //  kotlin("plugin.serialization") version "1.6.0-RC"
+
+   // id ("kotlinx-serialization")
+ //   kotlin("kapt")
 }
 
 android {
@@ -92,11 +94,13 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0-RC")
+
 
     // Room
     implementation ("androidx.room:room-runtime:2.5.0")
     implementation ("androidx.room:room-ktx:2.5.0")
-    kapt("androidx.room:room-compiler:2.5.0")
+    //kapt("androidx.room:room-compiler:2.5.0")
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
@@ -106,6 +110,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     implementation("com.google.dagger:hilt-android:2.44")  // ou versão mais recente
-    kapt("com.google.dagger:hilt-compiler:2.44")  // KAPT para processar anotações
+    //kapt("com.google.dagger:hilt-compiler:2.44")  // KAPT para processar anotações
 
 }

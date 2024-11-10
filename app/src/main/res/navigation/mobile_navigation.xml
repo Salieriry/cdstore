@@ -12,7 +12,6 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
 
-        <!-- Ação para navegar para os detalhes do CD -->
         <action
             android:id="@+id/action_home_to_cd_details"
             app:destination="@id/cdDetailsFragment" />
@@ -26,7 +25,6 @@
                 app:nullable="true"
                 android:defaultValue="@null" />
         </action>
-
     </fragment>
 
     <!-- Store Fragment -->
@@ -36,7 +34,6 @@
         android:label="@string/title_store"
         tools:layout="@layout/fragment_store">
 
-        <!-- Ação para navegar para os detalhes do CD -->
         <action
             android:id="@+id/action_store_to_cd_details"
             app:destination="@id/cdDetailsFragment" />
@@ -49,10 +46,33 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile">
 
-        <!-- Ação para navegar para a tela de registro -->
         <action
             android:id="@+id/action_profile_to_register"
             app:destination="@id/registerFragment" />
+
+        <action
+            android:id="@+id/action_profile_to_user_menu"
+            app:destination="@id/navigation_userMenuFragment" />
+    </fragment>
+
+    <!-- User Menu Fragment -->
+    <fragment
+        android:id="@+id/navigation_userMenuFragment"
+        android:name="com.app.cdstore.ui.usermenu.UserMenuFragment"
+        android:label="Menu do Usuário"
+        tools:layout="@layout/fragment_user_menu">
+
+        <action
+            android:id="@+id/action_user_menu_to_personal_data"
+            app:destination="@id/personalDataFragment" />
+
+        <action
+            android:id="@+id/action_user_menu_to_addresses"
+            app:destination="@id/addressesFragment" />
+
+        <action
+            android:id="@+id/action_user_menu_to_credit_cards"
+            app:destination="@id/creditCardsFragment" />
     </fragment>
 
     <!-- Register Fragment -->
@@ -62,6 +82,51 @@
         android:label="Registro"
         tools:layout="@layout/fragment_register" />
 
+    <!-- Personal Data Fragment -->
+    <fragment
+        android:id="@+id/personalDataFragment"
+        android:name="com.app.cdstore.ui.usermenu.clientdata.ClientDataFragment"
+        android:label="Dados Pessoais"
+        tools:layout="@layout/fragment_client_data" />
+
+    <!-- Addresses Fragment -->
+    <fragment
+        android:id="@+id/addressesFragment"
+        android:name="com.app.cdstore.ui.usermenu.address.AddressFragment"
+        android:label="Meus Endereços"
+        tools:layout="@layout/fragment_address">
+
+        <action
+            android:id="@+id/action_addresses_to_new_address"
+            app:destination="@id/newAddressFragment" />
+    </fragment>
+
+    <!-- New Address Fragment -->
+    <fragment
+        android:id="@+id/newAddressFragment"
+        android:name="com.app.cdstore.ui.usermenu.address.newaddress.NewAddressFragment"
+        android:label="Novo Endereço"
+        tools:layout="@layout/fragment_new_address" />
+
+    <!-- Credit Cards Fragment -->
+    <fragment
+        android:id="@+id/creditCardsFragment"
+        android:name="com.app.cdstore.ui.usermenu.creditcard.CreditCardFragment"
+        android:label="Cartões de Crédito"
+        tools:layout="@layout/fragment_credit_card">
+
+        <action
+            android:id="@+id/action_credit_cards_to_new_card"
+            app:destination="@id/newCreditCardFragment" />
+    </fragment>
+
+    <!-- New Credit Card Fragment -->
+    <fragment
+        android:id="@+id/newCreditCardFragment"
+        android:name="com.app.cdstore.ui.usermenu.creditcard.newcreditcard.NewCreditCardFragment"
+        android:label="Novo Cartão"
+        tools:layout="@layout/fragment_new_credit_card" />
+
     <!-- CD Details Fragment -->
     <fragment
         android:id="@+id/cdDetailsFragment"
@@ -69,12 +134,10 @@
         android:label="Detalhes do CD"
         tools:layout="@layout/fragment_cd_details">
 
-        <!-- Argumento esperado pelo CdDetailsFragment -->
         <argument
             android:name="cdId"
             app:argType="long" />
 
-        <!-- Ação para voltar para Home com popUp para limpar a pilha -->
         <action
             android:id="@+id/action_details_to_home"
             app:destination="@id/navigation_home"

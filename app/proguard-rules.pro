@@ -19,3 +19,46 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep `Companion` object fields of serializable classes.
+# This avoids serializer lookup through `getDeclaredClasses` as done for named companion objects.
+-if @kotlinx.serialization.Serializable class **
+-keepclassmembers class <1> {
+   static <1>$Companion Companion;
+}
+
+# Keep `serializer()` on companion objects (both default and named) of serializable classes.
+-if @kotlinx.serialization.Serializable class ** {
+   static **$* *;
+}
+-keepclassmembers class <2>$<3> {
+   kotlinx.serialization.KSerializer serializer(...);
+}
+
+# Keep `INSTANCE.serializer()` of serializable objects.
+-if @kotlinx.serialization.Serializable class ** {
+   public static ** INSTANCE;
+}
+-keepclassmembers class <1> {
+   public static <1> INSTANCE;
+   kotlinx.serialization.KSerializer serializer(...);
+}
+
+# @Serializable and @Polymorphic are used at runtime for polymorphic serialization.
+-keepattributes RuntimeVisibleAnnotations,AnnotationDefault
+
+# Custom rules for Kotlin Serialization classes in your app (replace com.yourcompany.yourpackage with com.app.cdstore)
+-keepattributes Annotation, InnerClasses
+-dontnote kotlinx.serialization.SerializationKt
+
+# Ensure the serializer is not removed for any class marked @Serializable
+-keep,includedescriptorclasses class com.app.cdstore.*$$serializer { *; }
+
+# Ensure companion objects and serializer methods are kept for @Serializable classes
+-keepclassmembers class com.app.cdstore.* {
+   static **$Companion Companion;
+}
+
+-keepclasseswithmembers class com.app.cdstore.* {
+   kotlinx.serialization.KSerializer serializer(...);
+}

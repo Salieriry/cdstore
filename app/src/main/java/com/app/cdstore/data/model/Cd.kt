@@ -3,10 +3,12 @@ package com.app.cdstore.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
-@Entity(tableName = "cds")
+//@Entity(tableName = "cds")
+@Serializable
 data class Cd(
-    @PrimaryKey val id: Long,
+    val id_cd: Long,
     val titulo: String,
     val artista: String,
     val genero: String? = null,
@@ -15,6 +17,6 @@ data class Cd(
     val estoque: Int,
     val price: Double,
     val imageUrl: String,
-    val descricao: String? = null,
+    val descricao: String? = null
 
 )

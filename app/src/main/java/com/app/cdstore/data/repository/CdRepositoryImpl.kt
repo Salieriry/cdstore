@@ -10,7 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 
-
+/*
 @Singleton
 class CdRepositoryImpl @Inject constructor(
     private val api: CdApi,
@@ -77,4 +77,4 @@ class CdRepositoryImpl @Inject constructor(
             emptyList()
         }
     }
-}
+} */
