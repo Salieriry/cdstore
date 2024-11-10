@@ -3,34 +3,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_home">
 
+    <!-- Home Fragment -->
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.app.cdstore.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
 
+        <!-- Ação para navegar para os detalhes do CD -->
+        <action
+            android:id="@+id/action_home_to_cd_details"
+            app:destination="@id/cdDetailsFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_storeFragment"
+            app:destination="@id/navigation_store">
+            <argument
+                android:name="filter_type"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="@null" />
+        </action>
+
+    </fragment>
+
+    <!-- Store Fragment -->
     <fragment
         android:id="@+id/navigation_store"
         android:name="com.app.cdstore.ui.store.StoreFragment"
         android:label="@string/title_store"
-        tools:layout="@layout/fragment_store" />
+        tools:layout="@layout/fragment_store">
 
+        <!-- Ação para navegar para os detalhes do CD -->
+        <action
+            android:id="@+id/action_store_to_cd_details"
+            app:destination="@id/cdDetailsFragment" />
+    </fragment>
+
+    <!-- Profile Fragment -->
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.app.cdstore.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile">
 
+        <!-- Ação para navegar para a tela de registro -->
         <action
-            android:id="@+id/action_login_to_register"
+            android:id="@+id/action_profile_to_register"
             app:destination="@id/registerFragment" />
-
     </fragment>
 
+    <!-- Register Fragment -->
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.app.cdstore.ui.register.RegisterFragment"
-        android:label="Registro"/>
+        android:label="Registro"
+        tools:layout="@layout/fragment_register" />
+
+    <!-- CD Details Fragment -->
+    <fragment
+        android:id="@+id/cdDetailsFragment"
+        android:name="com.app.cdstore.ui.details.CdDetailsFragment"
+        android:label="Detalhes do CD"
+        tools:layout="@layout/fragment_cd_details">
+
+        <!-- Argumento esperado pelo CdDetailsFragment -->
+        <argument
+            android:name="cdId"
+            app:argType="long" />
+
+        <!-- Ação para voltar para Home com popUp para limpar a pilha -->
+        <action
+            android:id="@+id/action_details_to_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
+
 </navigation>

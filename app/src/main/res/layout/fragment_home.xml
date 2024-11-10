@@ -5,19 +5,187 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment" >
+    android:padding="16dp"
+    android:background="@color/background_dark"
+    tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Seção Mais Vendidos -->
+            <TextView
+                android:id="@+id/titleBestSellers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Mais vendidos"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_color_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnViewAllBestSellers"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewAllBestSellers"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy Now"
+                android:textColor="@color/accent_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/titleBestSellers"
+                app:layout_constraintBottom_toBottomOf="@id/titleBestSellers"/>
+
+            <HorizontalScrollView
+                android:id="@+id/scrollBestSellers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@id/titleBestSellers">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Item CD Template - Repetir conforme necessário -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="180dp"
+                        android:layout_height="280dp"
+                        android:layout_marginEnd="16dp"
+                        app:cardBackgroundColor="@color/surface_dark"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imgCd"
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:scaleType="centerCrop"
+                                tools:src="@tools:sample/backgrounds/scenic"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/txtTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:textSize="16sp"
+                                android:textColor="@color/text_color_primary"
+                                android:text="Product A"
+                                app:layout_constraintTop_toBottomOf="@id/imgCd"/>
+
+                            <TextView
+                                android:id="@+id/txtPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/accent_color"
+                                android:text="$39.99"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Seção Adições Recentes -->
+            <TextView
+                android:id="@+id/titleNewAdditions"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Adições recentes"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_color_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnViewAllNewAdditions"
+                app:layout_constraintTop_toBottomOf="@id/scrollBestSellers"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewAllNewAdditions"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy Now"
+                android:textColor="@color/accent_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/titleNewAdditions"
+                app:layout_constraintBottom_toBottomOf="@id/titleNewAdditions"/>
+
+            <HorizontalScrollView
+                android:id="@+id/scrollNewAdditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@id/titleNewAdditions">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Item CD Template - Repetir conforme necessário -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="180dp"
+                        android:layout_height="280dp"
+                        android:layout_marginEnd="16dp"
+                        app:cardBackgroundColor="@color/surface_dark"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imgCdNew"
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:scaleType="centerCrop"
+                                tools:src="@tools:sample/backgrounds/scenic"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/txtTitleNew"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:textSize="16sp"
+                                android:textColor="@color/text_color_primary"
+                                android:text="Product B"
+                                app:layout_constraintTop_toBottomOf="@id/imgCdNew"/>
+
+                            <TextView
+                                android:id="@+id/txtPriceNew"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/accent_color"
+                                android:text="$24.99"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
