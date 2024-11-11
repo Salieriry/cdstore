@@ -35,8 +35,11 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Buy Now"
+                android:text="Ver Todos"
                 android:textColor="@color/accent_color"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/titleBestSellers"
                 app:layout_constraintBottom_toBottomOf="@id/titleBestSellers"/>
@@ -50,18 +53,25 @@
                 app:layout_constraintTop_toBottomOf="@id/titleBestSellers">
 
                 <LinearLayout
+                    android:id="@+id/containerBestSellers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Item CD Template - Repetir conforme necessário -->
+                    <!-- Item CD Template - Agora com interatividade -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardBestSeller"
                         android:layout_width="180dp"
                         android:layout_height="280dp"
                         android:layout_marginEnd="16dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:checkable="true"
                         app:cardBackgroundColor="@color/surface_dark"
                         app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
+                        app:cardElevation="4dp"
+                        app:rippleColor="@color/accent_color"
+                        android:foreground="?attr/selectableItemBackground">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -85,6 +95,19 @@
                                 android:text="Product A"
                                 app:layout_constraintTop_toBottomOf="@id/imgCd"/>
 
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnBuy"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:text="Comprar"
+                                android:textColor="@color/accent_color"
+                                app:strokeColor="@color/accent_color"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/txtPrice"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+
                             <TextView
                                 android:id="@+id/txtPrice"
                                 android:layout_width="wrap_content"
@@ -95,7 +118,8 @@
                                 android:textColor="@color/accent_color"
                                 android:text="$39.99"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"/>
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/btnBuy"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
@@ -120,8 +144,11 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Buy Now"
+                android:text="Ver Todos"
                 android:textColor="@color/accent_color"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/titleNewAdditions"
                 app:layout_constraintBottom_toBottomOf="@id/titleNewAdditions"/>
@@ -135,18 +162,25 @@
                 app:layout_constraintTop_toBottomOf="@id/titleNewAdditions">
 
                 <LinearLayout
+                    android:id="@+id/containerNewAdditions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Item CD Template - Repetir conforme necessário -->
+                    <!-- Item CD Template - Agora com interatividade -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardNewAddition"
                         android:layout_width="180dp"
                         android:layout_height="280dp"
                         android:layout_marginEnd="16dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:checkable="true"
                         app:cardBackgroundColor="@color/surface_dark"
                         app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
+                        app:cardElevation="4dp"
+                        app:rippleColor="@color/accent_color"
+                        android:foreground="?attr/selectableItemBackground">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -170,6 +204,19 @@
                                 android:text="Product B"
                                 app:layout_constraintTop_toBottomOf="@id/imgCdNew"/>
 
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnBuyNew"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:text="Comprar"
+                                android:textColor="@color/accent_color"
+                                app:strokeColor="@color/accent_color"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/txtPriceNew"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+
                             <TextView
                                 android:id="@+id/txtPriceNew"
                                 android:layout_width="wrap_content"
@@ -180,7 +227,8 @@
                                 android:textColor="@color/accent_color"
                                 android:text="$24.99"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"/>
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/btnBuyNew"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>

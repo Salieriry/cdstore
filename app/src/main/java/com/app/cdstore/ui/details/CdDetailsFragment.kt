@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import com.app.cdstore.R
 
 class CdDetailsFragment : Fragment() {
 
@@ -37,6 +38,17 @@ class CdDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Configuração de navegação para voltar
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        // Configura o clique para abrir a tela de carrinho
+        binding.btnAddToCart.setOnClickListener {
+            findNavController().navigate(R.id.action_details_to_cart)
+        }
+
         //setupToolbar()
         //setupObservers()
        // loadData()
@@ -118,10 +130,10 @@ class CdDetailsFragment : Fragment() {
             message,
             Snackbar.LENGTH_LONG
         ).show()
-    }
+    } */
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    } */
+    }
 }

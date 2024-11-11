@@ -1,4 +1,4 @@
-package com.app.cdstore.ui.usermenu.creditcard
+package com.app.cdstore.ui.usermenu.shoppingcart.checkout
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,20 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.app.cdstore.R
-import com.app.cdstore.databinding.FragmentCreditCardBinding
+import com.app.cdstore.databinding.FragmentCheckoutBinding
+import com.app.cdstore.databinding.FragmentClientDataBinding
 
+class CheckoutFragment : Fragment() {
 
-class CreditCardFragment : Fragment() {
-
-    private var _binding: FragmentCreditCardBinding? = null
+    private var _binding: FragmentCheckoutBinding? = null
     private val binding get() = _binding!!
 
-
     companion object {
-        fun newInstance() = CreditCardFragment()
+        fun newInstance() = CheckoutFragment()
     }
 
-    private val viewModel: CreditCardViewModel by viewModels()
+    private val viewModel: CheckoutViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +32,7 @@ class CreditCardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCreditCardBinding.inflate(inflater, container, false)
+        _binding = FragmentCheckoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,16 +44,26 @@ class CreditCardFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        // Configura o clique para abrir a tela de novo endereço
-        binding.newCardButton.setOnClickListener {
-            findNavController().navigate(R.id.action_credit_cards_to_new_card)
+        // Configura o clique para confirmar a compra e ir para a tela home
+        binding.confirmPurchaseButton.setOnClickListener {
+            findNavController().navigate(R.id.action_checkout_to_home)
+        }
+
+        // Configura o clique para selecionar o endereço
+        binding.changeAddressButton.setOnClickListener {
+            findNavController().navigate(R.id.action_checkout_to_addresses)
+        }
+
+        // Configura o clique para adicionar um novo cartão de crédito
+        binding.addCardButton.setOnClickListener {
+            findNavController().navigate(R.id.action_checkout_to_new_credit_card)
         }
 
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null // Evita vazamentos de memória
     }
 }
-

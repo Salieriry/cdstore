@@ -25,6 +25,10 @@
                 app:nullable="true"
                 android:defaultValue="@null" />
         </action>
+
+        <action
+            android:id="@+id/action_home_to_cart"
+            app:destination="@id/shoppingCartFragment" />
     </fragment>
 
     <!-- Store Fragment -->
@@ -37,6 +41,10 @@
         <action
             android:id="@+id/action_store_to_cd_details"
             app:destination="@id/cdDetailsFragment" />
+
+        <action
+            android:id="@+id/action_store_to_cart"
+            app:destination="@id/shoppingCartFragment" />
     </fragment>
 
     <!-- Profile Fragment -->
@@ -73,6 +81,10 @@
         <action
             android:id="@+id/action_user_menu_to_credit_cards"
             app:destination="@id/creditCardsFragment" />
+
+        <action
+            android:id="@+id/action_user_menu_to_shopping_cart"
+            app:destination="@id/shoppingCartFragment" />
     </fragment>
 
     <!-- Register Fragment -->
@@ -140,6 +152,44 @@
 
         <action
             android:id="@+id/action_details_to_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_details_to_cart"
+            app:destination="@id/shoppingCartFragment" />
+    </fragment>
+
+    <!-- Cart Fragment -->
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.app.cdstore.ui.usermenu.shoppingcart.ShoppingCartFragment"
+        android:label="Meu Carrinho"
+        tools:layout="@layout/fragment_shopping_cart">
+
+        <action
+            android:id="@+id/action_cart_to_checkout"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+
+    <!-- Checkout Fragment -->
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.app.cdstore.ui.usermenu.shoppingcart.checkout.CheckoutFragment"
+        android:label="Finalizar Compra"
+        tools:layout="@layout/fragment_checkout">
+
+        <action
+            android:id="@+id/action_checkout_to_addresses"
+            app:destination="@id/addressesFragment" />
+
+        <action
+            android:id="@+id/action_checkout_to_new_credit_card"
+            app:destination="@id/newCreditCardFragment" />
+
+        <action
+            android:id="@+id/action_checkout_to_home"
             app:destination="@id/navigation_home"
             app:popUpTo="@id/navigation_home"
             app:popUpToInclusive="true" />

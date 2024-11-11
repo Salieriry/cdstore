@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.app.cdstore.R
 import com.app.cdstore.databinding.FragmentAddressBinding
 
 
@@ -34,6 +35,12 @@ class AddressFragment : Fragment() {
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        // Configura o clique para abrir a tela de novo endereço
+        binding.newAddressButton.setOnClickListener {
+            findNavController().navigate(R.id.action_addresses_to_new_address)
+        }
+
 
     /*    // Observa mudanças no endereço (exemplo de uso do ViewModel)
         addressViewModel.addressData.observe(viewLifecycleOwner) { address ->

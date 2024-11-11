@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.app.cdstore.R
 import com.app.cdstore.databinding.FragmentStoreBinding
 //import com.app.cdstore.ui.cdadapter.CdAdapter
 import com.google.android.material.snackbar.Snackbar
@@ -32,6 +34,9 @@ class StoreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
       //  setupRecyclerView()
        // setupSearchAndFilters()
        // setupObservers()
@@ -115,10 +120,10 @@ class StoreFragment : Fragment() {
                 viewModel.applyFilter("popularity")
             }
         }
-    }
+    } */
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    } */
+    }
 }

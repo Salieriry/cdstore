@@ -51,6 +51,16 @@ class UserMenuFragment : Fragment() {
         binding.creditCardButton.setOnClickListener {
             findNavController().navigate(R.id.action_user_menu_to_credit_cards)
         }
+
+        // Configura o clique para abrir a tela de carrinho
+        binding.cartButton.setOnClickListener {
+            findNavController().navigate(R.id.action_user_menu_to_shopping_cart)
+        }
+
+        // Configura o clique para abrir a tela de carrinho
+        binding.cartViewButton.setOnClickListener {
+            findNavController().navigate(R.id.action_user_menu_to_shopping_cart)
+        }
     }
 
     override fun onDestroyView() {

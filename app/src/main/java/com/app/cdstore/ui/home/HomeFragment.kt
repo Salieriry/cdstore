@@ -45,6 +45,17 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Configura o clique para abrir a tela do produto
+        binding.btnBuy.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_cd_details)
+        }
+
+        // Configura o clique para abrir a tela do produto
+        binding.btnBuy.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_cd_details)
+        }
+
       //  setupRecyclerViews()
        // setupObservers()
        // setupClickListeners()
@@ -145,10 +156,10 @@ class HomeFragment : Fragment() {
     private fun navigateToDetails(cd: Cd) {
         val action = HomeFragmentDirections.actionHomeFragmentToCdDetailsFragment(cd.id)
         findNavController().navigate(action)
-    }
+    } */
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    } */
+    }
 }

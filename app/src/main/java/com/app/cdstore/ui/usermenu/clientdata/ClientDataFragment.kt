@@ -44,4 +44,10 @@ class ClientDataFragment : Fragment() {
         }
 
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // Evita vazamentos de memória
+    }
 }
+
