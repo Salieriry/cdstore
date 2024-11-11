@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
         }
 
         // Configura o clique para abrir a tela do produto
-        binding.btnBuy.setOnClickListener {
+        binding.btnBuyNew.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_cd_details)
         }
 

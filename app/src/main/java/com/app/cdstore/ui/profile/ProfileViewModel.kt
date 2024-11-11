@@ -17,33 +17,30 @@ class ProfileViewModel : ViewModel() {
     private val _userState = MutableLiveData<UserState>()
     val userState: LiveData<UserState> = _userState
 
-    fun login(userEmail: String, userPassword: String) {
+    fun loginUser(userEmail: String, userPassword: String) {
         _userState.value = UserState.Loading
 
         viewModelScope.launch {
             try {
-                // Tenta realizar o login
-
                 client.auth.signInWith(Email) {
                     email = userEmail
                     password = userPassword
                 }
 
-                // Atualiza o estado para sucesso no login
+
                 _userState.value = UserState.Success("Login realizado com sucesso")
-
             } catch (e: AuthRestException) {
-                // Trata erro específico de autenticação
                 _userState.value = UserState.Error("Erro de autenticação: ${e.message}")
-
             } catch (e: HttpRequestException) {
-                // Trata falhas de rede
                 _userState.value = UserState.Error("Falha de rede: verifique sua conexão com a internet.")
-
             } catch (e: Exception) {
-                // Trata outros erros
                 _userState.value = UserState.Error("Erro inesperado: ${e.message}")
             }
         }
+    }
+
+    // Função para redefinir o estado do usuário, caso necessário
+    fun resetUserState() {
+        _userState.value = UserState.Idle
     }
 }

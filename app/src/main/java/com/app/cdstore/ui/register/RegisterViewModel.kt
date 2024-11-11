@@ -56,6 +56,8 @@ class RegisterViewModel : ViewModel() {
 
     }
 
+
+
     // Opcional: Função para redefinir o estado, se necessário
     fun resetUserState() {
         _userState.value = UserState.Idle

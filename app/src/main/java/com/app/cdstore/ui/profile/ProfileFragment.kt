@@ -5,15 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.app.cdstore.databinding.FragmentProfileBinding
 import com.app.cdstore.R
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.app.cdstore.data.model.SupaBaseAuthViewModel
 
 class ProfileFragment : Fragment() {
 
@@ -21,19 +22,22 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var sharedPreferences: SharedPreferences
 
+    private val profileViewModel by viewModels<ProfileViewModel>()
+    private val authViewModel by viewModels<SupaBaseAuthViewModel>()
+    private lateinit var profileView: ProfileView
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
 
-        // Inicializar SharedPreferences Encriptados
+
+        // Initialize Encrypted SharedPreferences
         val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
         sharedPreferences = EncryptedSharedPreferences.create(
             "secure_prefs",
@@ -43,8 +47,9 @@ class ProfileFragment : Fragment() {
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
         )
 
-        // Carregar credenciais salvas, se existirem
-        loadSavedCredentials()
+
+        // Load saved credentials if available
+       // loadSavedCredentials()
 
         return root
     }
@@ -52,13 +57,26 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Configura o clique para abrir a tela de registro
+
+        // Configure click to open registration screen
         binding.registerContainer.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_register)
         }
+
+        // Initialize ProfileView with onLogin callback for navigation
+        profileView = ProfileView(
+            binding = binding,
+            authViewModel = authViewModel,
+            onLogin = {
+                sharedPreferences.edit().putBoolean("isLoggedIn", true).apply() // Save login state
+                findNavController().navigate(R.id.navigation_userMenuFragment)
+            },
+            profileViewModel = profileViewModel,
+            fragment = this
+        )
     }
 
-    // Função para salvar as credenciais
+    // Save credentials for future logins
     private fun saveCredentials(email: String, password: String) {
         with(sharedPreferences.edit()) {
             putString("email", email)
@@ -67,7 +85,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    // Função para carregar as credenciais salvas, se existirem
+    // Load saved credentials
     private fun loadSavedCredentials() {
         val savedEmail = sharedPreferences.getString("email", null)
         val savedPassword = sharedPreferences.getString("password", null)
@@ -75,22 +93,10 @@ class ProfileFragment : Fragment() {
         if (savedEmail != null && savedPassword != null) {
             binding.emailInput.setText(savedEmail)
             binding.passwordInput.setText(savedPassword)
-          //  binding.rememberMeCheckBox.isChecked = true
-            // Opcional: Auto-login
-            // loginViewModel.login(savedEmail, savedPassword) // Se necessário, adaptar
         }
     }
 
-    // Função para limpar as credenciais
-    private fun clearCredentials() {
-        with(sharedPreferences.edit()) {
-            remove("email")
-            remove("password")
-            apply()
-        }
-    }
-
-    // Função para validar os dados de entrada
+    // Validate user input
     private fun validateInput(email: String, password: String): Boolean {
         var isValid = true
 

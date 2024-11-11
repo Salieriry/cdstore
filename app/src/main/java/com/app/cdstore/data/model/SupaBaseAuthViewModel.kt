@@ -55,6 +55,42 @@ class SupaBaseAuthViewModel(application: Application) :AndroidViewModel(applicat
         }
     }
 
+    fun signIn(userEmail: String, userPassword: String) {
+        _userState.value = UserState.Loading
+
+        viewModelScope.launch {
+            try {
+
+
+                // Lógica de login
+                client.auth.signInWith(Email) {
+                    email = userEmail
+                    password = userPassword
+                }
+
+
+
+                // Salva o token após o cadastro bem-sucedido
+                saveToken()
+
+                // Atualiza o estado para sucesso no registro
+                _userState.value = UserState.Success("Cadastro realizado com sucesso")
+
+            } catch (e: AuthRestException) {
+                _userState.value = UserState.Error("Erro de autenticação: ${e.message}")
+
+            } catch (e: HttpRequestException) {
+                _userState.value = UserState.Error("Falha de rede: verifique sua conexão com a internet.")
+
+            } catch (e: SupabaseEncodingException) {
+                _userState.value = UserState.Error("Erro de encoding ao processar dados.")
+
+            } catch (e: Exception) {
+                _userState.value = UserState.Error("Erro inesperado: ${e.message}")
+            }
+        }
+    }
+
     private fun saveToken() {
         viewModelScope.launch {
             try {
